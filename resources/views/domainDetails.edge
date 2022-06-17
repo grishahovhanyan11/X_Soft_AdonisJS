@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Profile</title>
+
+  <style>
+
+    .app-wrapper {
+      margin: 5px;
+      text-align: center
+    }
+
+    .edit-domain-header {
+      border: 3px solid darkblue;
+      color: black;
+      border-radius: 10px;
+      padding-bottom: 10px;
+      margin: 5px;
+    }
+
+    .header-right {
+      display: inline;
+      margin-right: 80px;
+    }
+
+    .header-left {
+      float: left;
+    }
+
+    .to-profile-button {
+      font-size: 20px;
+      margin-top: 7px;
+      margin-left: 7px;
+    } 
+
+    .logout-button {
+      text-decoration: none;
+    }
+
+    .data-block {
+      border: 3px solid black;
+      border-radius: 12px;
+      margin: 5px;
+      font-size: 20px;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .to-profile-form {
+      text-align: left;
+      padding-left: 5px;
+    }
+
+    .new-domain-btn {
+      margin-top: 8px;
+    }
+
+    .test-info-header {
+      border: 2px solid black;
+      margin: 10px;
+    }
+
+    .test-data {
+      border: 2px dotted black;
+      margin: 10px;
+    }
+
+    .edit-domain-input {
+      font-size: 25px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .domain-error-block {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .domain-error-message {
+      margin-left: 600px;
+      margin-right: 600px;
+      border: 2px solid black;
+      border-radius: 20px;
+      font-size: 30px;
+    }
+    
+    .submit-btn {
+      margin: 7px
+    }
+
+  </style>
+</head>
+<body>
+
+   <div class="app-wrapper">
+      <div class="edit-domain-header">
+        <div class="header-left">
+          <form action="/profile" method="get">
+            <button type="submit" class="to-profile-button">
+              <span class="profile">Profile</span>
+            </button>
+          </form>
+        </div>
+        <h1 class="header-right"> Domain Details </h1>
+      </div>
+
+      <div class="data-block"> 
+        <div class="domain-info">
+          <div class="domain-error-block">
+            @if(flashMessages.has('hasError'))
+              <div class="domain-error-message"> {{ flashMessages.get('errorMessage') }} </div>
+            @elseif(flashMessages.has('errors.domain'))
+              <div class="domain-error-message"> {{ flashMessages.get('errors.domain') }} </div>
+            @endif
+          </div>
+
+          <form action="/domains/{{domain.id}}?_method=PUT" method="post" > 
+            <input name="domain" value={{ domain.name }} type="url" class="edit-domain-input">
+            <br>
+            <button type="submit" class="submit-btn"> Change </button>
+          </form>
+
+          <form action="/domains/{{domain.id}}?_method=DELETE" method="post"> 
+            <button type="submit" class="submit-btn"> Delete </button>
+          </form>
+
+          <hr>
+        </div>
+        <div>
+          <h2 class="test-info-header"> Domain Tests </h2>
+
+          @if( domainTests && domainTests.length > 0 )
+            @each( test in domainTests )
+              <div class="test-data">
+                <h3>  Request Author Email: {{ test.user.email }} </h3>
+                <div> Request Status: {{ test.status }} </div>
+                <div> Request Status Text: {{ test.statusText }} </div>
+                <div> Request Date: {{ test.createdAt }} </div>
+              </div>
+            @end
+          @else 
+            <div> No tests! </div>
+          @endif
+
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

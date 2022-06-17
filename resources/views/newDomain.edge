@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/domain.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <title>New domain</title>
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <div class="domain-header">
+      <div class="header-left">
+        <form action="/profile" method="get">
+          <button type="submit" class="to-profile-button">
+            <span class="profile">Profile</span>
+          </button>
+        </form>
+      </div>
+      <h1 class="header-right"> Add new domain </h1>
+    </div>
+
+    <div class="new-domain-content">
+      <div class="domain-error-block">
+        @if(flashMessages.has('hasError'))
+          <div class="domain-error-message"> {{ flashMessages.get('errorMessage') }} </div>
+        @elseif(flashMessages.has('errors.domain'))
+          <div class="domain-error-message"> {{ flashMessages.get('errors.domain') }} </div>
+        @endif
+      </div>
+
+      <div class="add-domain-block">
+        <div class="new-domain-description">New domain URL</div> 
+        <form action="/domains" method="post">
+          <input type="url" name="domain" placeholder="https://www.xsoft.am/" class="new-domain-input">
+          <br>
+          <button type="submit" class="new-domain-btn">Add New Domain</button>
+        </form>
+      </div>
+      <hr>
+    </div>
+  </div>
+</body>
+</html>

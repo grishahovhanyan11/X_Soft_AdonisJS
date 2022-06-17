@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <title>Profile</title>
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <div class="profile-header">
+      <h1 class="header-left"> Admin Profile </h1>
+
+      <div class="header-right"> 
+        <form action="/profile/logout" method="get">
+          <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-log-out logout-icon"></span> <span class="logout-span">Log out</span>
+          </button>
+        </form>
+      </div>   
+    </div>
+  
+    <div class="profile-content">
+      
+      <form action="/domains" method="get">
+        <button type="submit" class="new-domain-btn">
+            <span>Add new domain</span>
+        </button>
+      </form>
+      <hr>
+
+      <div class="domain-block">
+
+        @if(domains) 
+          <table id="domain-table"> 
+            <tr>
+              <th style= "color: red"> Name </th>
+              <th style= "color: red"> Details </th>
+            </tr>
+
+            @each(domain in domains) 
+              <tr>
+                <td> {{ domain.name }} </td>
+                <td> 
+                  <a href="/domains/{{ domain.id }}"> Details </a>
+                </td>
+              </tr>
+            @end
+          </table>
+
+        @else 
+          <h2> No domains in DB! </h2>
+        @endif
+
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

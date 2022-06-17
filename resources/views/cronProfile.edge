@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Profile</title>
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <div class="profile-header">
+      <h1 class="header-left"> Cron Profile</h1>
+
+      <div class="header-right"> 
+        <form action="/profile/logout" method="get">
+          <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-log-out logout-icon"></span> <span class="logout-span">Log out</span>
+          </button>
+        </form>
+      </div>   
+    </div>
+  
+    <div class="profile-content">
+      <h3> Enter count of domains in which you needed to do requests </h3>
+        
+      <form action="/domains/request" method="post"> 
+        <input name="count" placeholder="Domains count" type="number" class="center domains-count-input">
+        <br>
+        <button type="submit" class="do-requests-btn"> Send </button> 
+      </form>
+      
+      <hr>
+
+      @if(  flashMessages.has('testsData') )
+        @each( test in flashMessages.get('testsData')  )
+          <div class="test-data-block"> 
+            <div> Request Url: {{ test.url }} </div>
+            <div> Request Status: {{ test.status }} </div>
+            <div> Request Status Text: {{ test.statusText }} </div>
+          </div>
+        @end
+      @endif
+
+    </div>
+  </div>
+</body>
+</html>

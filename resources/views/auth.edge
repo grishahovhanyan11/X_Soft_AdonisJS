@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login & Registration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/auth.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="cont {{ flashMessages.has('registerPage') ? 's-signup': '' }}">
+    
+
+    <div class="form sign-in">
+      <div class="login-error">
+
+        @if( flashMessages.has('loginPage') )
+          @if( flashMessages.has('errors.email') )
+            <div class="login-error-block">  {{ flashMessages.get('errors.email') }} </div>
+          @elseif( flashMessages.has('errors.password') )
+            <div class="login-error-block">  {{ flashMessages.get('errors.password') }} </div>
+          @elseif( flashMessages.has('hasError') )
+            <div class="login-error-block">  {{ flashMessages.get('errorMessage') }} </div>
+          @endif
+        @endif
+
+      </div>
+
+      <h2>Sign In</h2>
+      <form action="/auth/login" method="post">
+        <label>
+          <span>Email Address</span>
+          <input type="email" name="email">
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password">
+        </label>
+        <button class="submit" type="submit">Sign In</button>
+      </form>
+     
+    </div>
+    <div class="sub-cont">
+      
+      <div class="img">
+        <div class="img-text m-up">
+          <h1>New here?</h1>
+          <p>sign up and test</p>
+        </div>
+        <div class="img-text m-in">
+          <h1>One of us?</h1>
+          <p>just sign in</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</span>
+          <span class="m-in">Sign In</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <div class="register-error">
+
+          @if( flashMessages.has('registerPage') )
+            @if( flashMessages.has('errors.email') )
+              <div class="register-error-block">  {{ flashMessages.get('errors.email') }} </div>
+            @elseif( flashMessages.has('errors.password') )
+              <div class="register-error-block">  {{ flashMessages.get('errors.password') }} </div>
+            @elseif( flashMessages.has('hasError') )
+              <div class="register-error-block">  {{ flashMessages.get('errorMessage') }} </div>
+            @endif
+
+            @if( flashMessages.has('success') )  
+              <div class="register-success-block">  {{ flashMessages.get('successMessage') }} </div>
+            @endif
+
+          @endif
+
+        </div>  
+        <h2>Sign Up</h2>
+        <form action="/auth/register" method="post">
+          <label>
+            <span>Email Address</span>
+            <input type="email" name="email">
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password">
+          </label>
+          <button type="submit" class="submit">Sign Up Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript" src="js/auth.js"></script>
+</body>
+</html>

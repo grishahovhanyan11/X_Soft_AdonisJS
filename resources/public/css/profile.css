@@ -1,0 +1,95 @@
+.app-wrapper {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.profile-header {
+  border: 3px solid darkblue;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.test-data-block {
+  border: 2px dotted black;
+  margin: 10px;
+  font-size: 25px;
+}
+
+.header-right {
+  float: right;
+}
+
+.header-left {
+  display: inline;
+  margin-left: 100px;
+}
+
+.logout-icon {
+  font-size: 20px;
+}
+
+.logout-span {
+  font-size: 20px;
+}
+
+.profile-content {
+  border: 3px solid darkblue;
+  border-radius: 12px;
+}
+
+.domain-block {
+  text-align: left;
+  margin: 0 10px 10px 10px;
+}
+
+.new-domain-btn {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 20px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  padding: 12px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* Remove Input Arrows*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+/* ======= */
+
+.domains-count-input {
+  font-size: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.do-requests-btn {
+  margin: 20px 0 20px 0;
+  font-size: 20px;
+}

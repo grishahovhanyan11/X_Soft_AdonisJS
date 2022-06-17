@@ -1,0 +1,53 @@
+ <div class="app-wrapper">
+      <div class="header"> 
+        <h1 class="header-left"> Domain Details </h1>   
+        <div class="header-right"> 
+          <div> User Email: #{userEmail} </div>
+
+          <form action="/profile/logout"> 
+            <button type="submit"> Log out </button>
+          </form>
+        </div>
+      </div>
+      <div class="data-block"> 
+        <form action="/profile" class="to-profile-form">
+          <button type="submit"> Profile </button>
+        </form>
+        <div class="domain-info">
+          @if(validationInfo)
+            <b style="color: red"> {{ validationInfo }}</b>
+          @else  
+            <b> Domain URL </b>
+          @endif  
+          <br>
+
+          {{--  <form action="/domain/{{domain.id}}?_method=PUT" method="post"> 
+            <input name="domain" value= domain.name type="url" style="margin-bottom: 20px">
+            <br>
+            <button type="submit"> Change </button>
+          </form>
+
+          <form action="/domain/{{domain.id}}?_method=DELETE" method="post"> 
+            <button type="submit"> Delete </button>
+          </form>  --}}
+          <hr>
+        </div>
+        <div>
+          <h2 class="test-info-header"> Domain Tests </h2>
+
+          @if(domainTests && domainTests.length > 0)
+            @each(test in domainTests)
+              <div class="test-data">
+                <h4>  Request Author Email: {{test.userEmail}} </h4>
+                <div> Request Status: {{test.status}} </div>
+                <div> Request Status Text: {{test.statusText}} </div>
+                <div> Request Date: {{test.requestDate}} </div>
+              </div>
+            @end
+          @else 
+            <div> No tests! </div>
+          @endif
+
+        </div>
+      </div>
+    </div>
